@@ -40,9 +40,14 @@ export interface FeaturedProject {
 export interface ClientProject {
   id: string;
   name: string;
+  /** Drives which inline domain icon renders on the card. */
+  domain: "fintech" | "commerce" | "analytics";
   sector: string;
   years: string;
+  role: string;
   blurb: string;
+  /** Two or three concrete, scannable achievements - not another paragraph. */
+  achievements: string[];
   metric: string;
   metricLabel: string;
 }

@@ -185,6 +185,69 @@ export function CloseIcon({ size = 18, className }: IconProps) {
   );
 }
 
+export function FintechIcon({ size = 18, className }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M3 20h18" />
+      <path d="M5 20V10" />
+      <path d="M10 20V6" />
+      <path d="M15 20v-8" />
+      <path d="M20 20V4" />
+    </svg>
+  );
+}
+
+export function CommerceIcon({ size = 18, className }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M6 8V6a6 6 0 0 1 12 0v2" />
+      <rect x="3" y="8" width="18" height="13" rx="2" />
+    </svg>
+  );
+}
+
+export function AnalyticsIcon({ size = 18, className }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 3v9h9" />
+    </svg>
+  );
+}
+
 export function LinkedinIcon({ size = 20, className }: IconProps) {
   return (
     <svg

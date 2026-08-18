@@ -75,7 +75,7 @@ export const en: Content = {
   work: {
     eyebrow: "02 / Selected work",
     heading: "Things I built that you can open right now.",
-    lede: "Two are my own products, live in production. The client engagements are described by domain: names stay confidential.",
+    lede: "Two are my own products, end to end. The client engagements below are described by domain: names stay confidential.",
     openSite: "Open the site",
     featured: [
       {
@@ -89,23 +89,8 @@ export const en: Content = {
         tone: "#FF4D57",
         wash: "radial-gradient(circle at 50% 40%, #241318 0%, #0E1014 70%)",
         blurb:
-          "The digital home of a Costa Rican football fan community. Live match centre, standings, a qualification calculator and an admin panel the owner uses on match night. Designed, built and deployed solo, from empty folder to production.",
+          "The digital home of a Costa Rican football fan community. Live match centre, standings, a qualification calculator and an admin panel the owner uses on match night. Designed, built and deployed solo, from empty folder to production. The calculator's engine also ships as its own zero-dependency site, quienpasa.kennethgm.com, built for fans of all six countries in the tournament and verified against a second, independent implementation before every release.",
         stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind v4", "Netlify"],
-        live: true
-      },
-      {
-        id: "quien-pasa",
-        name: "Quien Pasa",
-        wordmark: "Quien Pasa",
-        url: "quienpasa.kennethgm.com",
-        href: "https://quienpasa.kennethgm.com",
-        tag: "Live",
-        role: "Sole engineer",
-        tone: "#5FE3B0",
-        wash: "radial-gradient(circle at 50% 40%, #10231C 0%, #0E1014 70%)",
-        blurb:
-          "A qualification calculator for the 2026 Central American Cup. One HTML file, no dependencies, no server. It ships with a verification suite that runs a second, independent implementation of the engine and compares the two before anything goes out.",
-        stack: ["Vanilla JS", "Zero deps", "Node tooling", "Netlify"],
         live: true
       },
       {
@@ -127,30 +112,51 @@ export const en: Content = {
       {
         id: "lending",
         name: "Digital lending and refinance platform",
+        domain: "fintech",
         sector: "Fintech, US",
         years: "2025 to now",
+        role: "Frontend architecture and delivery",
         blurb:
-          "Customer-facing refinance flow for a US credit union: the web front end, the Node services behind it and the data model underneath. Rebuilt the release pipeline on Docker and cloud CI/CD.",
+          "Customer-facing refinance flow for a US credit union: the web front end, the Node services behind it and the data model underneath.",
+        achievements: [
+          "Owned the application flow end to end, from UI to the REST services and data model behind it.",
+          "Rebuilt the release pipeline on Docker and cloud CI/CD, cutting deploy time by roughly 60% for the whole team.",
+          "Refined loosely specified requirements with stakeholders before development started, not mid-sprint."
+        ],
         metric: "~60%",
         metricLabel: "Faster releases"
       },
       {
         id: "commerce",
         name: "Health and wellness e-commerce",
+        domain: "commerce",
         sector: "Retail, US",
         years: "2023 to 2025",
+        role: "Storefront, API layer and catalog migration",
         blurb:
-          "Direct-to-consumer storefront on a headless commerce stack. Led the catalog migration with all media and structured product data, coordinating cutover so the live store never went dark.",
+          "Direct-to-consumer storefront on a headless commerce stack, for a high-traffic US health and wellness retailer.",
+        achievements: [
+          "Led the migration of a 6,000+ product catalog, media included, with the live store never going dark during cutover.",
+          "Built the Node.js API layer powering a newly launched site, integrating commerce, Stripe payments and PIM data.",
+          "Owned release management and production troubleshooting after launch."
+        ],
         metric: "6,000+",
         metricLabel: "Products migrated"
       },
       {
         id: "analytics",
         name: "Recruitment and HR analytics",
+        domain: "analytics",
         sector: "HR SaaS",
         years: "2019 to 2022",
+        role: "Reporting frontend and backend services",
         blurb:
-          "Multi-tenant analytics surfacing recruitment and workforce insight for global enterprise customers. Led the reporting and dashboard front end, and built the services feeding it.",
+          "Multi-tenant analytics surfacing recruitment and workforce insight for global enterprise customers.",
+        achievements: [
+          "Led UI implementation for the reporting and dashboard modules used by enterprise customers worldwide.",
+          "Built backend services and worked directly with the database team on the data models feeding them.",
+          "Integrated AWS QuickSight to extend the platform's data visualization."
+        ],
         metric: "Global",
         metricLabel: "Enterprise tenants"
       }

@@ -1,8 +1,14 @@
-import { ExternalLinkIcon } from "@/components/Icons";
+import { AnalyticsIcon, CommerceIcon, ExternalLinkIcon, FintechIcon } from "@/components/Icons";
 import { LiveDot } from "@/components/ui/LiveDot";
 import { Reveal } from "@/components/ui/Reveal";
 import { TiltCard } from "@/components/ui/TiltCard";
-import type { Content } from "@/content/types";
+import type { ClientProject, Content } from "@/content/types";
+
+const DOMAIN_ICONS: Record<ClientProject["domain"], typeof FintechIcon> = {
+  fintech: FintechIcon,
+  commerce: CommerceIcon,
+  analytics: AnalyticsIcon
+};
 
 export function Work({ content }: { content: Content }) {
   const { work } = content;
@@ -108,34 +114,66 @@ export function Work({ content }: { content: Content }) {
           })}
         </div>
 
-        <div className="grid grid-cols-1 gap-4 [perspective:1400px] sm:grid-cols-2 lg:grid-cols-3">
-          {work.client.map((project, index) => (
-            <Reveal key={project.id} delay={index * 80}>
-              <TiltCard
-                strength={5}
-                className="flex h-full flex-col gap-4 rounded-[18px] border border-line bg-surface p-6"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="mono text-[10.5px] uppercase tracking-[0.16em] text-ink-3">
-                    {project.sector}
-                  </span>
-                  <span className="mono text-[10.5px] text-ink-3">{project.years}</span>
-                </div>
-                <h3 className="min-h-[52px] text-[19px] font-semibold leading-[1.24] tracking-[-0.02em]">
-                  {project.name}
-                </h3>
-                <p className="flex-1 text-[14px] leading-[1.62] text-ink-2">{project.blurb}</p>
-                <div className="flex items-center gap-2.5 border-t border-line-soft pt-3">
-                  <span className="text-[20px] font-bold tracking-[-0.03em] text-accent">
-                    {project.metric}
-                  </span>
-                  <span className="mono text-[10px] uppercase tracking-[0.1em] text-ink-3">
-                    {project.metricLabel}
-                  </span>
-                </div>
-              </TiltCard>
-            </Reveal>
-          ))}
+        <div className="flex flex-col gap-4">
+          {work.client.map((project, index) => {
+            const DomainIcon = DOMAIN_ICONS[project.domain];
+
+            return (
+              <Reveal key={project.id} delay={index * 80}>
+                <TiltCard
+                  strength={3}
+                  className="grid grid-cols-1 gap-5 rounded-[20px] border border-line bg-surface p-6 md:grid-cols-[180px_1fr] md:gap-8 md:p-8"
+                >
+                  <div className="flex flex-row items-center gap-4 md:flex-col md:items-start md:gap-5">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-line text-accent">
+                      <DomainIcon />
+                    </span>
+                    <div className="flex flex-col gap-1">
+                      <span className="mono text-[10.5px] uppercase tracking-[0.16em] text-ink-3">
+                        {project.sector}
+                      </span>
+                      <span className="mono text-[10.5px] text-ink-3">{project.years}</span>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-4">
+                    <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+                      <div className="flex flex-col gap-1">
+                        <h3 className="text-[21px] font-bold tracking-[-0.02em] md:text-[23px]">
+                          {project.name}
+                        </h3>
+                        <span className="mono text-[10.5px] uppercase tracking-[0.14em] text-accent">
+                          {project.role}
+                        </span>
+                      </div>
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-[25px] font-bold tracking-[-0.03em]">
+                          {project.metric}
+                        </span>
+                        <span className="mono text-[10px] uppercase tracking-[0.1em] text-ink-3">
+                          {project.metricLabel}
+                        </span>
+                      </div>
+                    </div>
+
+                    <p className="text-[14.5px] leading-[1.62] text-ink-2">{project.blurb}</p>
+
+                    <ul className="flex flex-col gap-2">
+                      {project.achievements.map((item) => (
+                        <li key={item} className="flex gap-2.5 text-[14px] leading-[1.6] text-ink-2">
+                          <span
+                            aria-hidden="true"
+                            className="mt-[9px] h-1 w-1 shrink-0 rounded-full bg-accent"
+                          />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </TiltCard>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>

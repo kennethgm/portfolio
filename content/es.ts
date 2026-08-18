@@ -75,7 +75,7 @@ export const es: Content = {
   work: {
     eyebrow: "02 / Trabajo destacado",
     heading: "Cosas que construí y que podés abrir ahora mismo.",
-    lede: "Dos son productos propios, en producción. Los proyectos de clientes se describen por dominio: los nombres quedan confidenciales.",
+    lede: "Dos son productos propios, de punta a punta. Los proyectos de clientes de abajo se describen por dominio: los nombres quedan confidenciales.",
     openSite: "Abrir el sitio",
     featured: [
       {
@@ -89,23 +89,8 @@ export const es: Content = {
         tone: "#FF4D57",
         wash: "radial-gradient(circle at 50% 40%, #241318 0%, #0E1014 70%)",
         blurb:
-          "La casa digital de una comunidad de afición al fútbol costarricense. Match center en vivo, tabla de posiciones, calculadora de clasificación y un panel de admin que su dueño usa la noche de partido. Diseñado, construido y desplegado en solitario, desde carpeta vacía hasta producción.",
+          "La casa digital de una comunidad de afición al fútbol costarricense. Match center en vivo, tabla de posiciones, calculadora de clasificación y un panel de admin que su dueño usa la noche de partido. Diseñado, construido y desplegado en solitario, desde carpeta vacía hasta producción. El motor de la calculadora también sale como sitio propio sin dependencias, quienpasa.kennethgm.com, hecho para la afición de los seis países del torneo y verificado contra una segunda implementación independiente antes de cada release.",
         stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind v4", "Netlify"],
-        live: true
-      },
-      {
-        id: "quien-pasa",
-        name: "Quién Pasa",
-        wordmark: "Quién Pasa",
-        url: "quienpasa.kennethgm.com",
-        href: "https://quienpasa.kennethgm.com",
-        tag: "En vivo",
-        role: "Único desarrollador",
-        tone: "#5FE3B0",
-        wash: "radial-gradient(circle at 50% 40%, #10231C 0%, #0E1014 70%)",
-        blurb:
-          "Calculadora de clasificación de la Copa Centroamericana 2026. Un solo archivo HTML, sin dependencias, sin servidor. Incluye una suite de verificación que corre una segunda implementación independiente del motor y las compara antes de publicar cualquier cambio.",
-        stack: ["JS puro", "Cero dependencias", "Tooling en Node", "Netlify"],
         live: true
       },
       {
@@ -127,30 +112,51 @@ export const es: Content = {
       {
         id: "lending",
         name: "Plataforma de préstamos y refinanciamiento",
+        domain: "fintech",
         sector: "Fintech, US",
         years: "2025 a hoy",
+        role: "Arquitectura y entrega de frontend",
         blurb:
-          "Flujo de refinanciamiento de cara al cliente para una credit union de Estados Unidos: el frontend, los servicios en Node detrás y el modelo de datos. Reconstruí el pipeline de release con Docker y CI/CD en la nube.",
+          "Flujo de refinanciamiento de cara al cliente para una credit union de Estados Unidos: el frontend, los servicios en Node detrás y el modelo de datos.",
+        achievements: [
+          "Manejé el flujo completo de la aplicación, desde la UI hasta los servicios REST y el modelo de datos.",
+          "Reconstruí el pipeline de release con Docker y CI/CD en la nube, bajando el tiempo de deploy ~60% para todo el equipo.",
+          "Refiné requerimientos poco definidos con los stakeholders antes de arrancar el desarrollo, no a mitad del sprint."
+        ],
         metric: "~60%",
         metricLabel: "Releases más rápidos"
       },
       {
         id: "commerce",
         name: "E-commerce de salud y bienestar",
+        domain: "commerce",
         sector: "Retail, US",
         years: "2023 a 2025",
+        role: "Storefront, API y migración de catálogo",
         blurb:
-          "Storefront directo al consumidor sobre un stack de comercio headless. Lideré la migración del catálogo con todos los medios y datos estructurados, coordinando el corte para que la tienda nunca dejara de vender.",
+          "Storefront directo al consumidor sobre un stack de comercio headless, para un retailer de salud y bienestar de alto tráfico en Estados Unidos.",
+        achievements: [
+          "Lideré la migración de un catálogo de 6.000+ productos, medios incluidos, sin que la tienda dejara de vender durante el corte.",
+          "Construí la capa de API en Node.js de un sitio recién lanzado, integrando comercio, pagos con Stripe y datos de PIM.",
+          "Manejé el release management y el soporte de producción después del lanzamiento."
+        ],
         metric: "6.000+",
         metricLabel: "Productos migrados"
       },
       {
         id: "analytics",
         name: "Analítica de reclutamiento y RRHH",
+        domain: "analytics",
         sector: "HR SaaS",
         years: "2019 a 2022",
+        role: "Frontend de reportes y servicios backend",
         blurb:
-          "Analítica multi-tenant con datos de reclutamiento y fuerza laboral para clientes empresariales globales. Lideré el frontend de reportes y dashboards, y construí los servicios que los alimentan.",
+          "Analítica multi-tenant con datos de reclutamiento y fuerza laboral para clientes empresariales globales.",
+        achievements: [
+          "Lideré la implementación de UI para los módulos de reportes y dashboards de clientes empresariales globales.",
+          "Construí servicios backend y trabajé directo con el equipo de base de datos en los modelos que los alimentan.",
+          "Integré AWS QuickSight para extender la visualización de datos de la plataforma."
+        ],
         metric: "Global",
         metricLabel: "Clientes empresariales"
       }
