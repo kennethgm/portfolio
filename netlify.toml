@@ -1,0 +1,19 @@
+# Deploy of kennethgm.com from this repo.
+# In Netlify: Add new site > Import an existing project > pick this repo,
+# and it should read this file on its own. The official Next.js runtime
+# plugin below handles SSG output, the proxy (middleware), and the
+# next/og image routes as Netlify Edge/Serverless Functions - no manual
+# functions setup needed.
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
