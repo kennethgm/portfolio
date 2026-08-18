@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; background: #0B0C10; }
+    a { color: #8EA2FF; text-decoration: none; }
+    a:hover { color: #B6C2FF; }
+    .disp { font-family: Archivo, "Helvetica Neue", Arial, sans-serif; }
+    .mono { font-family: "JetBrains Mono", ui-monospace, "SF Mono", Consolas, monospace; }
+    .row { transition: background 260ms ease, border-color 260ms ease; }
+    .row:hover { background: #12141B; border-color: #2E3341; }
+    @media (prefers-reduced-motion: reduce) { .row { transition: none; } }
+  </style>
+</helmet>
+
+<div class="disp" style="--a1: {{accent}}; position: relative; width: 1440px; background: #0B0C10; color: #F2F3F7; padding: 96px 72px 104px; box-sizing: border-box; display: flex; flex-direction: column; gap: 60px; overflow: hidden;">
+
+  <div style="position: absolute; bottom: -260px; left: -180px; width: 760px; height: 760px; border-radius: 50%; background: radial-gradient(circle, {{accent}} 0%, rgba(11,12,16,0) 66%); opacity: 0.09; pointer-events: none;"></div>
+
+  <div style="position: relative; display: flex; flex-direction: column; gap: 18px;">
+    <span class="mono" style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: {{accent}};">03 &mdash; Experience</span>
+    <h2 style="margin: 0; font-size: 60px; line-height: 1.02; font-weight: 700; font-stretch: 110%; letter-spacing: -0.032em; max-width: 20ch;">
+      Eleven years, one consultancy, three roles.
+    </h2>
+  </div>
+
+  <div style="position: relative; display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 56px; align-items: start;">
+
+    <div style="display: flex; flex-direction: column; gap: 26px;">
+
+      <div style="display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 18px; border-bottom: 1px solid #23262F;">
+        <div style="display: flex; flex-direction: column; gap: 7px;">
+          <h3 style="margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -0.024em;">10Pearls <span style="color: #7B8195; font-weight: 500;">(formerly ProximityCR)</span></h3>
+          <span style="font-size: 15px; color: #A8ADBD;">Enterprise software consultancy. Platforms for US clients.</span>
+        </div>
+        <span class="mono" style="font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; color: {{accent}}; white-space: nowrap;">Feb 2015 &rarr; now</span>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <sc-for list="{{roles}}" as="role" hint-placeholder-count="3">
+          <div class="row" style="display: flex; gap: 24px; padding: 22px 24px; border: 1px solid #1D2029; border-radius: 14px; background: #0E1014;">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding-top: 5px;">
+              <span style="width: 9px; height: 9px; border-radius: 50%; background: {{role.dot}};"></span>
+              <span style="width: 1px; flex-grow: 1; background: #23262F;"></span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+              <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 20px;">
+                <span style="font-size: 19px; font-weight: 600; letter-spacing: -0.018em;">{{role.title}}</span>
+                <span class="mono" style="font-size: 12px; color: #7B8195; white-space: nowrap;">{{role.span}}</span>
+              </div>
+              <p style="margin: 0; font-size: 14.8px; line-height: 1.66; color: #A8ADBD;">{{role.blurb}}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 14px; padding: 22px 26px; border: 1px solid #23262F; border-radius: 14px; background: #101218;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        <div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1;">
+          <span style="font-size: 16px; font-weight: 600; letter-spacing: -0.015em;">B.Sc. Information Systems Engineering</span>
+          <span style="font-size: 14px; color: #A8ADBD;">Universidad Nacional de Costa Rica</span>
+        </div>
+        <span class="mono" style="font-size: 12px; color: #7B8195;">2010 &ndash; 2014</span>
+      </div>
+
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 26px;">
+
+      <div style="display: flex; flex-direction: column; gap: 22px; padding: 30px 30px 34px; border: 1px solid #23262F; border-radius: 18px; background: #101218;">
+        <span class="mono" style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #7B8195;">Stack</span>
+        <sc-for list="{{stack}}" as="group" hint-placeholder-count="4">
+          <div style="display: flex; flex-direction: column; gap: 11px;">
+            <span class="mono" style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: {{accent}};">{{group.label}}</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 7px;">
+              <sc-for list="{{group.items}}" as="chip" hint-placeholder-count="5">
+                <span class="mono" style="font-size: 11.5px; padding: 6px 10px; border: 1px solid #23262F; border-radius: 7px; color: #C6CAD6;">{{chip.label}}</span>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 14px; padding: 28px 30px 30px; border: 1px solid #23262F; border-radius: 18px; background: #101218;">
+        <span class="mono" style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #7B8195;">Languages</span>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between;">
+            <span style="font-size: 15px;">Spanish</span>
+            <span class="mono" style="font-size: 12px; color: #A8ADBD;">Native</span>
+          </div>
+          <div style="display: flex; align-items: baseline; justify-content: space-between;">
+            <span style="font-size: 15px;">English</span>
+            <span class="mono" style="font-size: 12px; color: #A8ADBD;">Professional working</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <a href="#cv" style="display: flex; align-items: center; gap: 12px; padding: 16px 22px; border-radius: 12px; background: {{accent}}; color: #0B0C10; font-size: 14.5px; font-weight: 600;">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
+          Download full CV
+        </a>
+        <a href="#cv" style="display: flex; align-items: center; gap: 12px; padding: 16px 22px; border-radius: 12px; border: 1px solid #2C3040; color: #F2F3F7; font-size: 14.5px; font-weight: 500;">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
+          Download one-pager
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"accent":{"editor":"color","default":"#8EA2FF","options":["#8EA2FF","#5FE3B0","#FF9E6B","#D9A9FF"],"section":"Theme"}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#8EA2FF';
+    const chips = (list) => list.map((label, i) => ({ label: label, key: i }));
+
+    return {
+      accent: accent,
+
+      roles: [
+        {
+          title: 'Senior Software Engineer',
+          span: '2020 to now',
+          dot: accent,
+          blurb: 'Led frontend architecture and feature delivery on production platforms in React, Next.js and TypeScript. Rebuilt build and release pipelines with Docker, GitHub Actions and CircleCI. Designed Node.js REST APIs integrating payments, headless commerce and PIM services, and ran deployments and monitoring across AWS and Azure.'
+        },
+        {
+          title: 'Full Stack Developer',
+          span: '2017 to 2020',
+          dot: '#5FE3B0',
+          blurb: 'Built full stack web applications and internal business tools, developed and customised e-commerce storefronts, and delivered reusable UI component libraries adopted across client projects.'
+        },
+        {
+          title: 'Web Developer',
+          span: '2015 to 2017',
+          dot: '#7B8195',
+          blurb: 'Delivered e-commerce, marketing and customer service web projects with AngularJS, Vue.js, Magento, PHP and jQuery, covering implementation and post-launch support.'
+        }
+      ],
+
+      stack: [
+        { label: 'Frontend', items: chips(['React', 'Next.js', 'Angular', 'Vue.js', 'TypeScript', 'Jest']) },
+        { label: 'Backend', items: chips(['Node.js', 'REST APIs', 'PostgreSQL', 'MySQL', 'MongoDB']) },
+        { label: 'Cloud and DevOps', items: chips(['AWS', 'Azure', 'Docker', 'GitHub Actions', 'CircleCI']) },
+        { label: 'Commerce', items: chips(['commercetools', 'Stripe', 'Magento', 'PIM']) }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

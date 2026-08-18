@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+/* Color system lifted from the approved mockup (Option A, particle hero):
+   near-black, cool undertone, one periwinkle accent. Kept separate from
+   Liganeta's red/black and Quien Pasa's paper/green on purpose - those are
+   product brands, this is Kenneth's own. */
+@theme {
+  --color-bg: #0b0c10;
+  --color-surface: #101218;
+  --color-raised: #14161e;
+  --color-line: #23262f;
+  --color-line-soft: #1b1e27;
+
+  --color-ink: #f2f3f7;
+  --color-ink-2: #a8adbd;
+  --color-ink-3: #7b8195;
+
+  --color-accent: #8ea2ff;
+  --color-accent-strong: #b6c2ff;
+  /* For glow (box-shadow/filter) only, never for text: no guaranteed contrast floor. */
+  --color-accent-glow: rgb(142 162 255 / 45%);
+
+  --color-ok: #5fe3b0;
+
+  --font-display: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-mono-face), ui-monospace, "SF Mono", Consolas, monospace;
+}
+
+html {
+  background: var(--color-bg);
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+table {
+  font-variant-numeric: tabular-nums;
+}
+
+@utility mono {
+  font-family: var(--font-mono);
+}
+
+/* Soft glow behind the hero canvas / section headers, echoing the accent. */
+@utility glow-accent {
+  box-shadow: 0 0 24px 0 var(--color-accent-glow);
+}
+
+@media (hover: none) {
+  button,
+  a[role="tab"],
+  select {
+    min-height: 44px;
+  }
+}
+
+button:not(:disabled),
+[role="tab"],
+[role="button"],
+summary {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-strong);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Reveal-on-scroll: content is visible by default (so it never depends on
+   JS to be readable - no-script, crawler, or a hook that fails to mount).
+   Only once useReveal's effect actually runs does it add "reveal-armed" to
+   <html> and start hiding [data-reveal] elements until IntersectionObserver
+   flips data-revealed to "true". */
+[data-reveal] {
+  transition: opacity 640ms cubic-bezier(0.16, 1, 0.3, 1), transform 640ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html.reveal-armed [data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+html.reveal-armed [data-reveal][data-revealed="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}

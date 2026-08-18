@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; background: #0B0C10; }
+    a { color: #8EA2FF; text-decoration: none; }
+    a:hover { color: #B6C2FF; }
+    .disp { font-family: Archivo, "Helvetica Neue", Arial, sans-serif; }
+    .mono { font-family: "JetBrains Mono", ui-monospace, "SF Mono", Consolas, monospace; }
+    @keyframes pulseDot { 0%, 100% { opacity: 1; } 50% { opacity: 0.32; } }
+    .live-dot { animation: pulseDot 2.4s ease-in-out infinite; }
+    @media (prefers-reduced-motion: reduce) { .live-dot { animation: none; } }
+  </style>
+</helmet>
+
+<div class="disp" style="--a1: {{accent}}; position: relative; width: 375px; background: #0B0C10; color: #F2F3F7; padding: 48px 20px 90px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px; overflow: hidden;">
+
+  <div style="position: absolute; top: -140px; right: -120px; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, {{accent}} 0%, rgba(11,12,16,0) 66%); opacity: 0.12; pointer-events: none;"></div>
+
+  <div style="position: relative; display: flex; flex-direction: column; gap: 14px;">
+    <span class="mono" style="font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: {{accent}};">02 &mdash; Selected work</span>
+    <h2 style="margin: 0; font-size: 34px; line-height: 1.04; font-weight: 700; font-stretch: 110%; letter-spacing: -0.032em;">
+      Things I built that you can open right now.
+    </h2>
+    <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #A8ADBD;">
+      Two are my own products, live in production. Client engagements are described by domain: names stay confidential.
+    </p>
+  </div>
+
+  <div style="position: relative; display: flex; flex-direction: column; gap: 16px;">
+    <sc-for list="{{featured}}" as="item" hint-placeholder-count="2">
+      <div style="display: flex; flex-direction: column; border: 1px solid #23262F; border-radius: 18px; background: linear-gradient(160deg, #14161E 0%, #101218 100%); overflow: hidden;">
+
+        <div style="position: relative; height: 150px; background: {{item.wash}}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #23262F; overflow: hidden;">
+          <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 32px 32px;"></div>
+          <div style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <span style="font-size: 30px; font-weight: 800; font-stretch: 118%; letter-spacing: -0.04em; text-transform: uppercase; color: {{item.tone}};">{{item.wordmark}}</span>
+            <span class="mono" style="font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #A8ADBD;">[ live screenshot ]</span>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 12px; padding: 22px 20px 24px;">
+          <div style="display: flex; align-items: center; gap: 9px;">
+            <span class="live-dot" style="width: 6px; height: 6px; border-radius: 50%; background: #5FE3B0;"></span>
+            <span class="mono" style="font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #5FE3B0;">{{item.tag}}</span>
+            <span style="width: 1px; height: 10px; background: #23262F;"></span>
+            <span class="mono" style="font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #7B8195;">{{item.role}}</span>
+          </div>
+
+          <h3 style="margin: 0; font-size: 23px; font-weight: 700; letter-spacing: -0.025em;">{{item.name}}</h3>
+          <span class="mono" style="font-size: 11.5px; color: {{accent}};">{{item.url}}</span>
+
+          <p style="margin: 0; font-size: 14.5px; line-height: 1.62; color: #A8ADBD;">{{item.blurb}}</p>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 6px; padding-top: 2px;">
+            <sc-for list="{{item.stack}}" as="chip" hint-placeholder-count="4">
+              <span class="mono" style="font-size: 10.5px; padding: 5px 9px; border: 1px solid #23262F; border-radius: 6px; color: #A8ADBD;">{{chip.label}}</span>
+            </sc-for>
+          </div>
+
+          <a href="{{item.href}}" style="display: flex; align-items: center; justify-content: center; gap: 9px; min-height: 46px; margin-top: 4px; border-radius: 999px; border: 1px solid #2C3040; color: #F2F3F7; font-size: 14.5px; font-weight: 500;">
+            Open the site
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="position: relative; display: flex; flex-direction: column; gap: 12px;">
+    <sc-for list="{{client}}" as="item" hint-placeholder-count="3">
+      <div style="display: flex; flex-direction: column; gap: 12px; padding: 22px 20px 24px; border: 1px solid #23262F; border-radius: 16px; background: #101218;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <span class="mono" style="font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #7B8195;">{{item.sector}}</span>
+          <span class="mono" style="font-size: 10px; color: #7B8195;">{{item.years}}</span>
+        </div>
+        <h3 style="margin: 0; font-size: 18px; font-weight: 600; line-height: 1.26; letter-spacing: -0.02em;">{{item.name}}</h3>
+        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #A8ADBD;">{{item.blurb}}</p>
+        <div style="display: flex; align-items: center; gap: 9px; padding-top: 4px; border-top: 1px solid #1B1E27;">
+          <span style="font-size: 19px; font-weight: 700; letter-spacing: -0.03em; color: {{accent}};">{{item.metric}}</span>
+          <span class="mono" style="font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #7B8195;">{{item.metricLabel}}</span>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"accent":{"editor":"color","default":"#8EA2FF","options":["#8EA2FF","#5FE3B0","#FF9E6B","#D9A9FF"],"section":"Theme"}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const chips = (list) => list.map((label, i) => ({ label: label, key: i }));
+
+    return {
+      accent: this.props.accent ?? '#8EA2FF',
+
+      featured: [
+        {
+          name: 'La Liganeta',
+          wordmark: 'Liganeta',
+          url: 'laliganeta.com',
+          href: 'https://laliganeta.com',
+          tag: 'Live',
+          role: 'Sole engineer',
+          tone: '#FF4D57',
+          wash: 'radial-gradient(circle at 50% 40%, #241318 0%, #0E1014 70%)',
+          blurb: 'The digital home of a Costa Rican football fan community. Live match centre, standings, qualification calculator and an admin panel used on match night. Built and deployed solo.',
+          stack: chips(['Next.js 16', 'TypeScript', 'Tailwind v4', 'Netlify'])
+        },
+        {
+          name: 'Quién Pasa',
+          wordmark: 'Quién Pasa',
+          url: 'quienpasa.kennethgm.com',
+          href: 'https://quienpasa.kennethgm.com',
+          tag: 'Live',
+          role: 'Sole engineer',
+          tone: '#5FE3B0',
+          wash: 'radial-gradient(circle at 50% 40%, #10231C 0%, #0E1014 70%)',
+          blurb: 'A qualification calculator for the 2026 Central American Cup. One HTML file, no dependencies, no server, and a verification suite that checks the engine against a second implementation before release.',
+          stack: chips(['Vanilla JS', 'Zero deps', 'Node tooling'])
+        }
+      ],
+
+      client: [
+        {
+          name: 'Digital lending and refinance platform',
+          sector: 'Fintech, US',
+          years: '2025 to now',
+          blurb: 'Customer-facing refinance flow for a US credit union: web front end, Node services and the data model underneath.',
+          metric: '~60%',
+          metricLabel: 'Faster releases'
+        },
+        {
+          name: 'Health and wellness e-commerce',
+          sector: 'Retail, US',
+          years: '2023 to 2025',
+          blurb: 'Headless direct-to-consumer storefront. Led the catalog migration with cutover coordinated so the live store never went dark.',
+          metric: '6,000+',
+          metricLabel: 'Products migrated'
+        },
+        {
+          name: 'Recruitment and HR analytics',
+          sector: 'HR SaaS',
+          years: '2019 to 2022',
+          blurb: 'Multi-tenant analytics for global enterprise customers. Led the reporting and dashboard front end and built the services feeding it.',
+          metric: 'Global',
+          metricLabel: 'Enterprise tenants'
+        }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

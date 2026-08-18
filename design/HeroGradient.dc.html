@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; background: #0B0C10; }
+    a { color: #8EA2FF; text-decoration: none; }
+    a:hover { color: #B6C2FF; }
+    .disp { font-family: Archivo, "Helvetica Neue", Arial, sans-serif; }
+    .mono { font-family: "JetBrains Mono", ui-monospace, "SF Mono", Consolas, monospace; }
+
+    @keyframes blobA {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33%      { transform: translate(180px, 90px) scale(1.18); }
+      66%      { transform: translate(-120px, 140px) scale(0.9); }
+    }
+    @keyframes blobB {
+      0%, 100% { transform: translate(0, 0) scale(1.05); }
+      40%      { transform: translate(-200px, -70px) scale(0.88); }
+      70%      { transform: translate(140px, -150px) scale(1.2); }
+    }
+    @keyframes blobC {
+      0%, 100% { transform: translate(0, 0) scale(0.95); }
+      50%      { transform: translate(-160px, 120px) scale(1.25); }
+    }
+    .blob-a { animation: blobA 26s ease-in-out infinite; }
+    .blob-b { animation: blobB 32s ease-in-out infinite; }
+    .blob-c { animation: blobC 22s ease-in-out infinite; }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .marquee-track { animation: marquee 38s linear infinite; }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; }
+      50%      { opacity: 0.35; }
+    }
+    .live-dot { animation: pulseDot 2.4s ease-in-out infinite; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .blob-a, .blob-b, .blob-c, .marquee-track, .live-dot { animation: none; }
+    }
+  </style>
+</helmet>
+
+<div class="disp" style="--a1: {{accent}}; position: relative; width: 1440px; height: 900px; overflow: hidden; background: #0B0C10; color: #F2F3F7; display: flex; flex-direction: column;">
+
+  <div style="position: absolute; inset: -20%; pointer-events: none; filter: blur(90px);">
+    <div class="blob-a" style="position: absolute; top: 8%; left: 4%; width: 720px; height: 720px; border-radius: 50%; background: {{accent}}; opacity: 0.30;"></div>
+    <div class="blob-b" style="position: absolute; top: 26%; right: 2%; width: 640px; height: 640px; border-radius: 50%; background: #5FE3B0; opacity: 0.20;"></div>
+    <div class="blob-c" style="position: absolute; bottom: 2%; left: 34%; width: 560px; height: 560px; border-radius: 50%; background: #B58CFF; opacity: 0.22;"></div>
+  </div>
+
+  <div style="position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 45%, rgba(11,12,16,0) 20%, rgba(11,12,16,0.72) 78%);"></div>
+
+  <div style="position: absolute; inset: 0; pointer-events: none; opacity: 0.85; mix-blend-mode: overlay; background-image: url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/></filter><rect width='160' height='160' filter='url(%23g)' opacity='0.55'/></svg>&quot;);"></div>
+
+  <header style="position: relative; z-index: 3; display: flex; align-items: center; justify-content: space-between; padding: 30px 64px;">
+    <div style="width: 32px; height: 32px; border: 1px solid rgba(242,243,247,0.45); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+      <span class="mono" style="font-size: 12px; font-weight: 500;">KG</span>
+    </div>
+    <nav style="display: flex; align-items: center; gap: 38px;">
+      <span class="mono" style="font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #C6CAD6;">Work</span>
+      <span class="mono" style="font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #C6CAD6;">Experience</span>
+      <span class="mono" style="font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #C6CAD6;">Contact</span>
+      <div style="display: flex; align-items: center; gap: 2px; padding: 4px; border: 1px solid rgba(242,243,247,0.22); border-radius: 999px;">
+        <span class="mono" style="font-size: 11px; font-weight: 500; padding: 4px 12px; border-radius: 999px; background: #F2F3F7; color: #0B0C10;">EN</span>
+        <span class="mono" style="font-size: 11px; font-weight: 500; padding: 4px 12px; border-radius: 999px; color: #C6CAD6;">ES</span>
+      </div>
+    </nav>
+  </header>
+
+  <main style="position: relative; z-index: 3; flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px; padding: 0 64px; text-align: center;">
+
+    <div style="display: flex; align-items: center; gap: 12px; padding: 8px 18px 8px 14px; border: 1px solid rgba(242,243,247,0.16); border-radius: 999px; background: rgba(11,12,16,0.45);">
+      <span class="live-dot" style="width: 7px; height: 7px; border-radius: 50%; background: #5FE3B0; box-shadow: 0 0 12px #5FE3B0;"></span>
+      <span class="mono" style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #DDE0E8;">Available for new work</span>
+    </div>
+
+    <h1 style="margin: 0; font-size: 132px; line-height: 0.86; font-weight: 800; font-stretch: 120%; letter-spacing: -0.045em; text-transform: uppercase;">
+      Kenneth<br>Granados
+    </h1>
+
+    <div style="display: flex; align-items: center; gap: 18px;">
+      <span style="width: 44px; height: 1px; background: rgba(242,243,247,0.3);"></span>
+      <span class="mono" style="font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: {{accent}};">Full stack engineer</span>
+      <span style="width: 44px; height: 1px; background: rgba(242,243,247,0.3);"></span>
+    </div>
+
+    <p style="margin: 0; max-width: 58ch; font-size: 19.5px; line-height: 1.62; color: #C6CAD6;">
+      I build and ship production web applications. Eleven years delivering platforms for US companies in fintech, healthcare, e&#8209;commerce and analytics.
+    </p>
+
+    <div style="display: flex; align-items: center; gap: 16px; padding-top: 10px;">
+      <a href="#contact" style="display: flex; align-items: center; gap: 12px; padding: 17px 32px; border-radius: 999px; background: #F2F3F7; color: #0B0C10; font-size: 15.5px; font-weight: 600;">
+        Start a project
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+      </a>
+      <a href="#work" style="display: flex; align-items: center; gap: 12px; padding: 17px 32px; border-radius: 999px; border: 1px solid rgba(242,243,247,0.28); color: #F2F3F7; font-size: 15.5px; font-weight: 500;">
+        See the work
+      </a>
+    </div>
+
+  </main>
+
+  <div style="position: relative; z-index: 3; overflow: hidden; padding: 20px 0; border-top: 1px solid rgba(242,243,247,0.1); background: rgba(11,12,16,0.55);">
+    <div class="marquee-track" style="display: flex; align-items: center; gap: 44px; width: max-content;">
+      <sc-for list="{{ticker}}" as="item" hint-placeholder-count="12">
+        <span class="mono" style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #9AA0B0; white-space: nowrap;">{{item.label}}</span>
+      </sc-for>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"accent":{"editor":"color","default":"#8EA2FF","options":["#8EA2FF","#5FE3B0","#FF9E6B","#D9A9FF"],"section":"Theme"}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const stack = [
+      'React', 'Next.js', 'TypeScript', 'Node.js', 'PostgreSQL',
+      'AWS', 'Azure', 'Docker', 'GitHub Actions', 'commercetools', 'Stripe', 'Jest'
+    ];
+    // Doubled so the -50% marquee loop meets its own start with no gap.
+    const ticker = stack.concat(stack).map((label, i) => ({ label: label, key: i }));
+    return {
+      accent: this.props.accent ?? '#8EA2FF',
+      ticker: ticker
+    };
+  }
+}
+</script>
+</body>
+</html>

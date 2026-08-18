@@ -1,0 +1,63 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "title": "Hero — Option A", "x": 0, "y": 0, "w": 1440, "h": 900 },
+    { "file": "HeroGradient.dc.html", "title": "Hero — Option B", "x": 1560, "y": 0, "w": 1440, "h": 900 },
+    { "file": "Work.dc.html", "title": "Selected work", "x": 0, "y": 1160, "w": 1440, "h": 1280 },
+    { "file": "Experience.dc.html", "title": "Experience", "x": 1560, "y": 1160, "w": 1440, "h": 1160 },
+    { "file": "Contact.dc.html", "title": "How I work + Contact", "x": 3120, "y": 1160, "w": 1440, "h": 1360 },
+    { "file": "HeroMobile.dc.html", "title": "Hero — mobile 375", "x": 0, "y": 2720, "w": 375, "h": 812 },
+    { "file": "WorkMobile.dc.html", "title": "Selected work — mobile 375", "x": 455, "y": 2720, "w": 375, "h": 2000 }
+  ],
+  "annotations": [
+    {
+      "id": "brief",
+      "x": 0,
+      "y": -340,
+      "w": 900,
+      "text": "kennethgm.com — Kenneth Granados\n\nOne page, bilingual EN/ES, two audiences: freelance clients up top, recruiters further down. Client names never appear; engagements are described by domain, the way your CVs do it.\n\nAccent colour is a tweak on every artboard — change it in one place and the whole system follows."
+    },
+    {
+      "id": "option-a",
+      "x": 0,
+      "y": -170,
+      "w": 620,
+      "text": "OPTION A — particle constellation. Engineered and precise. Real canvas, drifts slowly, links points that come close, and goes fully static under reduced motion."
+    },
+    {
+      "id": "option-b",
+      "x": 1560,
+      "y": -170,
+      "w": 620,
+      "text": "OPTION B — drifting mesh gradient with heavy grain. Warmer and more atmospheric. Your name is the hero instead of the headline, with a stack ticker along the bottom."
+    },
+    {
+      "id": "work-note",
+      "x": 0,
+      "y": 990,
+      "w": 620,
+      "text": "Cards tilt toward the pointer on desktop, off on touch. The two image panels are placeholders until I capture the live sites."
+    },
+    {
+      "id": "exp-note",
+      "x": 1560,
+      "y": 990,
+      "w": 620,
+      "text": "The recruiter half. No team sizes and no weekly hours anywhere, as you asked."
+    },
+    {
+      "id": "contact-note",
+      "x": 3120,
+      "y": 990,
+      "w": 620,
+      "text": "How I work is three principles, not four. The fourth was availability in hours, so it is gone."
+    },
+    {
+      "id": "mobile-note",
+      "x": 0,
+      "y": 2560,
+      "w": 760,
+      "text": "Mobile at 375px. Tilt is off on touch, every button is 46px or taller, and the particle field runs at about a third of the desktop point count so it does not drain a phone."
+    }
+  ],
+  "launch": { "view": "canvas" }
+}

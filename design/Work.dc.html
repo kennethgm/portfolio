@@ -1,0 +1,206 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; background: #0B0C10; }
+    a { color: #8EA2FF; text-decoration: none; }
+    a:hover { color: #B6C2FF; }
+    .disp { font-family: Archivo, "Helvetica Neue", Arial, sans-serif; }
+    .mono { font-family: "JetBrains Mono", ui-monospace, "SF Mono", Consolas, monospace; }
+
+    .tilt {
+      transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1), border-color 380ms ease;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .tilt:hover { border-color: #3A4054; }
+    .tilt-lift { transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1); transform: translateZ(40px); }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; }
+      50%      { opacity: 0.3; }
+    }
+    .live-dot { animation: pulseDot 2.4s ease-in-out infinite; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tilt, .tilt-lift { transition: none; }
+      .live-dot { animation: none; }
+    }
+  </style>
+</helmet>
+
+<div class="disp" style="--a1: {{accent}}; position: relative; width: 1440px; background: #0B0C10; color: #F2F3F7; padding: 96px 72px 104px; box-sizing: border-box; display: flex; flex-direction: column; gap: 56px; overflow: hidden;">
+
+  <div style="position: absolute; top: -220px; right: -160px; width: 720px; height: 720px; border-radius: 50%; background: radial-gradient(circle, {{accent}} 0%, rgba(11,12,16,0) 66%); opacity: 0.10; pointer-events: none;"></div>
+
+  <div style="position: relative; display: flex; align-items: flex-end; justify-content: space-between; gap: 40px;">
+    <div style="display: flex; flex-direction: column; gap: 18px;">
+      <span class="mono" style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: {{accent}};">02 &mdash; Selected work</span>
+      <h2 style="margin: 0; font-size: 60px; line-height: 1.02; font-weight: 700; font-stretch: 110%; letter-spacing: -0.032em; max-width: 18ch;">
+        Things I built that you can open right now.
+      </h2>
+    </div>
+    <p style="margin: 0 0 8px; max-width: 34ch; font-size: 16px; line-height: 1.62; color: #A8ADBD;">
+      Two are my own products, live in production. The client engagements are described by domain: names stay confidential.
+    </p>
+  </div>
+
+  <div style="position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; perspective: 1400px;">
+    <sc-for list="{{featured}}" as="item" hint-placeholder-count="2">
+      <div class="tilt" data-tilt style="position: relative; display: flex; flex-direction: column; border: 1px solid #23262F; border-radius: 20px; background: linear-gradient(160deg, #14161E 0%, #101218 100%); overflow: hidden;">
+
+        <div style="position: relative; height: 250px; background: {{item.wash}}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #23262F; overflow: hidden;">
+          <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px;"></div>
+          <div class="tilt-lift" style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 12px;">
+            <span style="font-size: 54px; font-weight: 800; font-stretch: 118%; letter-spacing: -0.04em; text-transform: uppercase; color: {{item.tone}};">{{item.wordmark}}</span>
+            <span class="mono" style="font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; color: #A8ADBD;">[ live screenshot ]</span>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 16px; padding: 30px 32px 34px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span class="live-dot" style="width: 6px; height: 6px; border-radius: 50%; background: #5FE3B0;"></span>
+            <span class="mono" style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #5FE3B0;">{{item.tag}}</span>
+            <span style="width: 1px; height: 11px; background: #23262F;"></span>
+            <span class="mono" style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #7B8195;">{{item.role}}</span>
+          </div>
+
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 20px;">
+            <h3 style="margin: 0; font-size: 30px; font-weight: 700; letter-spacing: -0.025em;">{{item.name}}</h3>
+            <span class="mono" style="font-size: 12.5px; color: {{accent}};">{{item.url}}</span>
+          </div>
+
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.66; color: #A8ADBD;">{{item.blurb}}</p>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; padding-top: 4px;">
+            <sc-for list="{{item.stack}}" as="chip" hint-placeholder-count="4">
+              <span class="mono" style="font-size: 11px; letter-spacing: 0.08em; padding: 6px 11px; border: 1px solid #23262F; border-radius: 7px; color: #A8ADBD;">{{chip.label}}</span>
+            </sc-for>
+          </div>
+        </div>
+
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; perspective: 1400px;">
+    <sc-for list="{{client}}" as="item" hint-placeholder-count="3">
+      <div class="tilt" data-tilt style="display: flex; flex-direction: column; gap: 16px; padding: 30px 30px 34px; border: 1px solid #23262F; border-radius: 18px; background: #101218;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <span class="mono" style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #7B8195;">{{item.sector}}</span>
+          <span class="mono" style="font-size: 11px; letter-spacing: 0.08em; color: #7B8195;">{{item.years}}</span>
+        </div>
+        <h3 style="margin: 0; font-size: 21px; font-weight: 600; line-height: 1.24; letter-spacing: -0.02em; min-height: 52px;">{{item.name}}</h3>
+        <p style="margin: 0; font-size: 14.5px; line-height: 1.62; color: #A8ADBD; flex-grow: 1;">{{item.blurb}}</p>
+        <div style="display: flex; align-items: center; gap: 10px; padding-top: 6px; border-top: 1px solid #1B1E27;">
+          <span style="font-size: 22px; font-weight: 700; letter-spacing: -0.03em; color: {{accent}};">{{item.metric}}</span>
+          <span class="mono" style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #7B8195;">{{item.metricLabel}}</span>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"accent":{"editor":"color","default":"#8EA2FF","options":["#8EA2FF","#5FE3B0","#FF9E6B","#D9A9FF"],"section":"Theme"}}'>
+class Component extends DCLogic {
+  componentDidMount() {
+    this.reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.fine = window.matchMedia('(hover: hover)').matches;
+    if (this.reduced || !this.fine) return;
+
+    this.cards = Array.from(document.querySelectorAll('[data-tilt]'));
+    this.cards.forEach((card) => {
+      const move = (event) => {
+        const box = card.getBoundingClientRect();
+        const px = (event.clientX - box.left) / box.width - 0.5;
+        const py = (event.clientY - box.top) / box.height - 0.5;
+        card.style.transform =
+          'rotateX(' + (-py * 7).toFixed(2) + 'deg) rotateY(' + (px * 9).toFixed(2) + 'deg) translateY(-6px)';
+      };
+      const leave = () => { card.style.transform = ''; };
+      card.addEventListener('pointermove', move);
+      card.addEventListener('pointerleave', leave);
+      card._tilt = { move: move, leave: leave };
+    });
+  }
+
+  componentWillUnmount() {
+    (this.cards || []).forEach((card) => {
+      if (!card._tilt) return;
+      card.removeEventListener('pointermove', card._tilt.move);
+      card.removeEventListener('pointerleave', card._tilt.leave);
+    });
+  }
+
+  renderVals() {
+    const chips = (list) => list.map((label, i) => ({ label: label, key: i }));
+
+    return {
+      accent: this.props.accent ?? '#8EA2FF',
+
+      featured: [
+        {
+          name: 'La Liganeta',
+          wordmark: 'Liganeta',
+          url: 'laliganeta.com',
+          tag: 'Live',
+          role: 'Sole engineer',
+          tone: '#FF4D57',
+          wash: 'radial-gradient(circle at 50% 40%, #241318 0%, #0E1014 70%)',
+          blurb: 'The digital home of a Costa Rican football fan community. Live match centre, standings, a qualification calculator and an admin panel the owner uses on match night. Designed, built and deployed solo, from empty folder to production.',
+          stack: chips(['Next.js 16', 'React 19', 'TypeScript', 'Tailwind v4', 'Netlify'])
+        },
+        {
+          name: 'Quién Pasa',
+          wordmark: 'Quién Pasa',
+          url: 'quienpasa.kennethgm.com',
+          tag: 'Live',
+          role: 'Sole engineer',
+          tone: '#5FE3B0',
+          wash: 'radial-gradient(circle at 50% 40%, #10231C 0%, #0E1014 70%)',
+          blurb: 'A qualification calculator for the 2026 Central American Cup. One HTML file, no dependencies, no server. It ships with a verification suite that runs a second, independent implementation of the engine and compares the two before anything goes out.',
+          stack: chips(['Vanilla JS', 'Zero deps', 'Node tooling', 'Netlify'])
+        }
+      ],
+
+      client: [
+        {
+          name: 'Digital lending and refinance platform',
+          sector: 'Fintech, US',
+          years: '2025 to now',
+          blurb: 'Customer-facing refinance flow for a US credit union: the web front end, the Node services behind it and the data model underneath. Rebuilt the release pipeline on Docker and cloud CI/CD.',
+          metric: '~60%',
+          metricLabel: 'Faster releases'
+        },
+        {
+          name: 'Health and wellness e-commerce',
+          sector: 'Retail, US',
+          years: '2023 to 2025',
+          blurb: 'Direct-to-consumer storefront on a headless commerce stack. Led the catalog migration with all media and structured product data, coordinating cutover so the live store never went dark.',
+          metric: '6,000+',
+          metricLabel: 'Products migrated'
+        },
+        {
+          name: 'Recruitment and HR analytics',
+          sector: 'HR SaaS',
+          years: '2019 to 2022',
+          blurb: 'Multi-tenant analytics surfacing recruitment and workforce insight for global enterprise customers. Led the reporting and dashboard front end, and built the services feeding it.',
+          metric: 'Global',
+          metricLabel: 'Enterprise tenants'
+        }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

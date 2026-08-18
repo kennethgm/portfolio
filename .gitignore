@@ -1,0 +1,12 @@
+node_modules/
+.next/
+out/
+.env
+.env.local
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+.netlify/
+
+# Design canvas working files stay, but the seeded output is a 2 MB build artifact.
+design/kenneth-granados-portfolio.html
